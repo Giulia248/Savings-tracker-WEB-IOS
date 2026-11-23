@@ -72,11 +72,6 @@ Both clients read and write the same file:
 
 Amounts are whole cents, so the totals have no rounding errors.
 
-Importing adds the transactions to the current profile, with two checks:
-
-- Duplicates are skipped. A transaction counts as a duplicate when the profile already has one with the same date, type, amount, category and note. Copies are counted, so two identical entries in the file stay two entries after importing into an empty profile.
-- When the file's currency differs from the profile's currency, the app asks before importing. Amounts are not converted.
-
 ### Theme
 
 The palette is Olive Garden Feast, with one added red for errors and losses:
@@ -90,10 +85,6 @@ The palette is Olive Garden Feast, with one added red for errors and losses:
 | `#bc6c25` rust | Spending in charts | |
 | `#8f4f15` dark rust | Spending in text | |
 | `#9b2c2c` brick | Delete buttons, losers | |
-
-Rust on cream has a contrast ratio of 3.8:1, which is enough for chart bars but too low for small text, so text uses the darker rust. Dark mode uses a lighter olive (`#b5c27a`) for income and a lighter red (`#e8998d`) for errors. Income and spending also differ by sign (+ and −), so the app does not rely on color alone.
-
-The spending by category chart uses horizontal bars in one color, with the category name on each bar. This avoids needing a separate color for each category.
 
 Fonts: Bricolage Grotesque for headings and Hanken Grotesk for body text. Both are bundled with the app, so they work offline.
 
