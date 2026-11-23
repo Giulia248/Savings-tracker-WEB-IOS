@@ -21,9 +21,10 @@ Out of scope for now: cloud sync, bank connections and shared accounts.
 ## Architecture
 
 ```
-etc/
-├── web/    React + Vite, Recharts for graphs, IndexedDB storage
-└── ios/    SwiftUI, Swift Charts, SwiftData storage
+Savings-tracker-WEB-IOS/
+├── web/         React + Vite, Recharts for graphs, IndexedDB storage
+├── ios/         SwiftUI, Swift Charts, SwiftData storage
+└── resources/   Source icon image and the script that builds the app icons
 ```
 
 ```
@@ -88,6 +89,26 @@ The palette is Olive Garden Feast, with one added red for errors and losses:
 
 Fonts: Bricolage Grotesque for headings and Hanken Grotesk for body text. Both are bundled with the app, so they work offline.
 
+### App icon
+
+The icon is a piggy bank in forest green on cream. The source image is `resources/piggi2.png`, and `resources/make_icons.swift` builds every icon from it:
+
+| File | Size | Used for |
+| --- | --- | --- |
+| `resources/icon-1024.png` | 1024 × 1024, no transparency | iOS app icon |
+| `web/public/apple-touch-icon.png` | 180 × 180, no transparency | iPhone Home Screen, when the web app is added from Safari |
+| `web/public/favicon.png` | 64 × 64, rounded corners | Browser tab |
+
+The script recolors the drawing to `#283618` and places it on a `#fefae0` background. It leaves space around the drawing so iOS's rounded corners do not cut it. iOS does not allow transparent icons, so the iOS and Home Screen icons are opaque.
+
+To change the icon, replace `resources/piggi2.png` and run the script from the repo root. It needs macOS, because it uses the built-in CoreGraphics framework:
+
+```bash
+swift resources/make_icons.swift
+```
+
+The source is 512 × 512, so the 1024 iOS icon is scaled up and its lines are slightly soft. A source of 1024 × 1024 or larger gives a sharper result.
+
 ### web
 
 React with Vite and TypeScript. Recharts draws the graphs. Dexie wraps IndexedDB. React Router handles the pages.
@@ -104,6 +125,7 @@ web/
 │   ├── theme/         Light and dark preference, theme colors for the charts
 │   ├── styles/        Theme variables, global styles, page styles
 │   └── main.tsx
+├── public/            Favicon and Home Screen icon, served as they are
 ├── index.html
 └── package.json
 ```
