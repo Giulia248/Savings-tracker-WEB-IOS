@@ -1,0 +1,89 @@
+/*
+ * Theme tokens. Components use the role tokens (--bg, --income, ...),
+ * never the palette tokens directly, so dark mode only remaps roles.
+ */
+:root {
+  /* Palette */
+  --cream: #fefae0;
+  --forest: #283618;
+  --olive: #606c38;
+  --sand: #dda15e;
+  --rust: #bc6c25;
+  --brick: #9b2c2c;
+
+  /* Roles, light mode */
+  --bg: var(--cream);
+  --surface: #f6efcc;
+  --surface-strong: #ece3b4;
+  --border: #ddd3a0;
+  --text: var(--forest);
+  --text-muted: #56603a;
+  --primary: var(--olive);
+  --on-primary: var(--cream);
+  --income: var(--olive);
+  --spending: var(--rust);
+  /* Rust on cream is 3.8:1, too low for small text. Text uses a darker rust (6:1). */
+  --spending-text: #8f4f15;
+  --highlight: var(--sand);
+  --danger: var(--brick);
+  --focus: var(--rust);
+  --nav-bg: var(--forest);
+  --nav-text: var(--cream);
+  --nav-active: var(--sand);
+
+  /* Type */
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Hanken Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+
+  /* Shape */
+  --radius-sm: 6px;
+  --radius-lg: 18px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: var(--forest);
+    --surface: #313f20;
+    --surface-strong: #3b4b28;
+    --border: #4b5b34;
+    --text: var(--cream);
+    --text-muted: #cbc8a4;
+    --primary: var(--sand);
+    --on-primary: var(--forest);
+    --income: #b5c27a;
+    --spending: var(--sand);
+    --spending-text: var(--sand);
+    --highlight: var(--olive);
+    --danger: #e8998d;
+    --focus: var(--sand);
+    --nav-bg: #1d2810;
+    --nav-text: var(--cream);
+    --nav-active: var(--sand);
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: var(--forest);
+  --surface: #313f20;
+  --surface-strong: #3b4b28;
+  --border: #4b5b34;
+  --text: var(--cream);
+  --text-muted: #cbc8a4;
+  --primary: var(--sand);
+  --on-primary: var(--forest);
+  --income: #b5c27a;
+  --spending: var(--sand);
+  --spending-text: var(--sand);
+  --highlight: var(--olive);
+  --danger: #e8998d;
+  --focus: var(--sand);
+  --nav-bg: #1d2810;
+  --nav-text: var(--cream);
+  --nav-active: var(--sand);
+
+  color-scheme: dark;
+}
