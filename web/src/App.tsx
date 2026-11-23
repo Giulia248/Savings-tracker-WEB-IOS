@@ -24,6 +24,7 @@ export function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
+      <p className="app-version muted">v{__APP_VERSION__}</p>
     </SessionProvider>
   );
 }
