@@ -20,7 +20,7 @@ function useRemote<T>(load: () => Promise<Fetched<T>>, key: string): RemoteState
     return () => {
       active = false;
     };
-    // `key` identifies the request. `load` is recreated on every render, so it is not a dependency.
+    // Re-run on `key` only: `load` changes every render.
   }, [key]);
 
   return state;

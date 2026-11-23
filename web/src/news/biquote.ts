@@ -1,8 +1,4 @@
-/**
- * Client for https://biquote.io. No API key is needed and CORS is open,
- * so the browser calls it directly. Responses are cached for a few minutes,
- * as the biquote docs ask clients not to poll.
- */
+/** biquote.io client: no key, open CORS, responses cached for 5 minutes. */
 const BASE_URL = "https://biquote.io/api";
 const CACHE_MS = 5 * 60 * 1000;
 
@@ -24,10 +20,7 @@ export interface Mover {
   changePercent: number;
 }
 
-/**
- * The live API returns `data` items with `name`. The docs describe `items`
- * with `description`. Both shapes are accepted.
- */
+/** Live API sends `data`/`name`, docs say `items`/`description`: both accepted. */
 interface MoversResponse {
   period: string;
   data?: RawMover[];

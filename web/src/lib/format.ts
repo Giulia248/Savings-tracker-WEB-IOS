@@ -19,7 +19,7 @@ export function formatCompactMoney(cents: number, currency: string): string {
   }).format(cents / 100);
 }
 
-/** Accepts "12.50" and "12,50". Returns cents, or null when the value is not a positive amount. */
+/** Parses "12.50" or "12,50" to cents. Null if not positive. */
 export function parseAmount(input: string): number | null {
   const value = Number(input.trim().replace(",", "."));
   if (!Number.isFinite(value) || value <= 0) return null;

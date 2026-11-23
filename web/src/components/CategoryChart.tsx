@@ -5,10 +5,7 @@ import { useThemeColors } from "../theme/preference";
 
 const ROW_HEIGHT = 36;
 
-/**
- * Horizontal bars in one colour. Category names sit on the axis,
- * so the chart needs no colour per category and no legend.
- */
+/** One colour for all bars: names on the axis replace a legend. */
 export function CategoryChart({ data, currency }: { data: CategoryPoint[]; currency: string }) {
   const colors = useThemeColors();
 

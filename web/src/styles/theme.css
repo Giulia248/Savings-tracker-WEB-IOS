@@ -1,7 +1,4 @@
-/*
- * Theme tokens. Components use the role tokens (--bg, --income, ...),
- * never the palette tokens directly, so dark mode only remaps roles.
- */
+/* Components use role tokens only, so dark mode just remaps roles. */
 :root {
   /* Palette */
   --cream: #fefae0;
@@ -22,7 +19,7 @@
   --on-primary: var(--cream);
   --income: var(--olive);
   --spending: var(--rust);
-  /* Rust on cream is 3.8:1, too low for small text. Text uses a darker rust (6:1). */
+  /* Darker rust for text: rust on cream is only 3.8:1. */
   --spending-text: #8f4f15;
   --highlight: var(--sand);
   --danger: var(--brick);

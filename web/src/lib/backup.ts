@@ -78,11 +78,7 @@ export interface ImportResult {
   skipped: number;
 }
 
-/**
- * Adds the backup's transactions to the profile and skips ones that already exist.
- * Matching counts copies: if the profile has one identical transaction and the file
- * has two, one is added. So two equal coffees on the same day both survive an import.
- */
+/** Adds transactions, skipping duplicates. Copies are counted, so real repeats survive. */
 export async function importBackup(profileId: number, backup: Backup): Promise<ImportResult> {
   return db.transaction("rw", db.transactions, async () => {
     const existing = new Map<string, number>();
